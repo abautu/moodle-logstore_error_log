@@ -26,28 +26,37 @@ namespace logstore_error_log\log;
 
 use core\event\base;
 use tool_log\log\manager;
+use tool_log\log\writer;
 
 defined('MOODLE_INTERNAL') || die();
 
-/** 
- * @package logstore_error_log\log 
+/**
+ * Log store writer that sends data to PHP's error_log.
+ *
+ * @package logstore_error_log\log
  */
-class store implements \tool_log\log\writer {
-
+class store implements writer {
+    /**
+     * Construct
+     *
+     * @param \tool_log\log\manager $manager
+     */
     public function __construct(manager $manager) {
         // Nothing to do.
     }
 
     /**
-     * @param base $event
-     * @return void
+     * {@inheritDoc}
      */
     public function write(base $event) {
         $data = json_encode($event->get_data());
+        // phpcs:ignore
         error_log("logstore_error_log: $data");
     }
 
-    /** @return void  */
+    /**
+     * {@inheritDoc}
+     */
     public function dispose() {
         // Nothing to do.
     }
