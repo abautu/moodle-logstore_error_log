@@ -27,6 +27,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'logstore_error_log';
 $plugin->maturity  = MATURITY_STABLE;
-$plugin->version   = 2024120700;
+$plugin->version   = 2025071800;
 $plugin->release   = $plugin->version;
 $plugin->requires  = 2020061525;
